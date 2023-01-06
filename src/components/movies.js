@@ -4,13 +4,12 @@ import Loader from "./Loader";
 const Movies = () => {
   const { data, isLoading, No_picture_available } = useGlobalContext();
   if (isLoading) return <Loader />;
-  console.log(data);
   return (
     <section className="movie-container">
       {data &&
         data.Search?.map((movie) => (
-          <Link to={`/${movie.imdbID}`}>
-            <article className="movie-card" key={movie.imdbID}>
+          <Link to={`/${movie.imdbID}`} key={movie.imdbID}>
+            <article className="movie-card">
               <img
                 src={
                   movie.Poster === "N/A" ? No_picture_available : movie.Poster

@@ -15,7 +15,6 @@ const UseFetch = (query) => {
       setIsLoaing(true);
       const res = await fetch(`${url}${query}`);
       const d = await res.json();
-      console.log(d);
       if (d.Response === "False") {
         setErr({ err: true, msg: d.Error });
         setIsLoaing(false);

@@ -6,7 +6,6 @@ const SearchFrom = () => {
     e.preventDefault();
   };
   const handleQuery = (e) => {
-    console.log(e.target.value);
     setQuery(e.target.value);
   };
   return (
@@ -15,7 +14,7 @@ const SearchFrom = () => {
       <form onSubmit={handleSubmit}>
         <input type="text" value={query} onChange={(e) => handleQuery(e)} />
       </form>
-      <p>{err.msg}</p>
+      {err.err && <p>{err.msg}</p>}
     </div>
   );
 };
