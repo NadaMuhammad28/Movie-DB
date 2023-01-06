@@ -1,19 +1,28 @@
 import { useGlobalContext } from "../services/context";
-
+import { Link } from "react-router-dom";
+import Loader from "./Loader";
 const Movies = () => {
-  const { data } = useGlobalContext();
-  console.log(data.Search);
+  const { data, isLoading, No_picture_available } = useGlobalContext();
+  if (isLoading) return <Loader />;
+  console.log(data);
   return (
     <section className="movie-container">
       {data &&
         data.Search?.map((movie) => (
-          <article classNam="movie-card">
-            <img src={movie.Poster} />
-            <div>
-              <h4>{movie.Title}</h4>
-              <h5>{movie.Year}</h5>
-            </div>
-          </article>
+          <Link to={`/${movie.imdbID}`}>
+            <article className="movie-card" key={movie.imdbID}>
+              <img
+                src={
+                  movie.Poster === "N/A" ? No_picture_available : movie.Poster
+                }
+                alt={movie.Title}
+              />
+              <div className="movie-desc">
+                <h4>{movie.Title}</h4>
+                <h5>{movie.Year}</h5>
+              </div>
+            </article>
+          </Link>
         ))}
     </section>
   );
