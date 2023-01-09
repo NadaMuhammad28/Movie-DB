@@ -8,8 +8,12 @@ const Movies = () => {
     <section className="movie-container">
       {data &&
         data.Search?.map((movie) => (
-          <Link to={`/${movie.imdbID}`} key={movie.imdbID}>
-            <article className="movie-card">
+          <Link
+            to={`/${movie.imdbID}`}
+            key={movie.imdbID}
+            className="movie-card"
+          >
+            <article>
               <img
                 src={
                   movie.Poster === "N/A" ? No_picture_available : movie.Poster

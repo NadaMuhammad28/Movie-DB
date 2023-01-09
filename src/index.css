@@ -4,8 +4,8 @@
   box-sizing: border-box;
 }
 :root {
-  --container-max-width: 85%;
-  --max-gap: 3rem;
+  --container-max-width: 85vw;
+  --max-gap: 2.5rem;
   --clr-primary-5: hsl(205, 78%, 60%);
   --clr-bg: #f1f5f8;
   --clr-grey-2: #102a42;
@@ -53,37 +53,41 @@ code {
 a {
   text-decoration: none;
 }
+
+/*/=========================================MOVIES LIST========================================*/
 .movie-container {
   display: flex;
   gap: var(--max-gap);
   align-items: center;
   flex-wrap: wrap;
+  height: 100vh;
   align-content: flex-start;
 }
-.movie-container > a {
+
+.movie-card {
+  /* width: 16rem; */
   position: relative;
   overflow: hidden;
+  flex-basis: calc(21%);
+  align-self: flex-start;
 }
-.movie-container > a:hover > .movie-card > .movie-desc {
+
+.movie-card img {
+  height: 25rem;
+  display: block;
+  max-width: inherit;
+  width: 100%;
+  /* object-fit: cover; */
+}
+.movie-container > a:hover .movie-desc {
   height: auto;
   opacity: 1;
   transform: translateY(0);
   transition: all 0.3s linear;
 }
-.movie-card {
-  align-self: flex-start !important;
-  overflow: hidden;
-  width: 17rem;
-}
-.movie-card > img {
-  height: 400px;
-  display: block;
-  max-width: inherit;
-  width: 100%;
-  object-fit: cover;
-}
+
 .movie-desc {
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(126, 70, 70, 0.75);
   color: #fff;
   word-wrap: break-word;
   word-break: break-word;
@@ -118,9 +122,9 @@ a {
   line-height: 1.8;
   text-transform: capitalize;
 }
-.Single-movie-container > div {
+.Single-movie-container > .desc-container {
   display: block;
-  width: 30%;
+  width: 45%;
 }
 .Single-movie-container > div > img {
   flex: 1 1 1%;
@@ -152,7 +156,7 @@ SEARCH FORM
 
 form > input {
   border: transparent;
-  padding: 1%;
+  padding: 2%;
   width: 40%;
   border-radius: 5px;
   margin-bottom: 1%;
@@ -188,4 +192,123 @@ Loading
   border: 3px solid #ccc;
   border-top-color: var(--clr-primary-5);
   animation: spinner 0.6s linear infinite;
+}
+/**************************************************************************************
+================================MEDIA QUERIEs=================================================*/
+@media (max-width: 1300px) {
+  .movie-container {
+    gap: 2rem;
+  }
+  .movie-card {
+    flex-basis: calc(22.5%);
+  }
+  .Single-movie-container > .desc-container {
+    width: 58%;
+  }
+}
+@media (max-width: 1200px) {
+  .movie-card {
+    flex-basis: calc(30.5%);
+  }
+}
+@media (max-width: 887px) {
+  h1 {
+    font-size: 2rem !important;
+  }
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  .Single-movie-container > div > p {
+    font-size: 1rem;
+  }
+  form > input {
+    width: 60%;
+    padding: 2%;
+  }
+
+  .Single-movie-container > .desc-container {
+    width: 60%;
+  }
+
+  .movie-container {
+    gap: 2rem;
+  }
+  .movie-card {
+    flex-basis: 40%;
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: 540px) {
+  .form-container {
+    margin: 3% auto;
+    text-align: center;
+  }
+  form > input {
+    width: 80%;
+    padding: 2%;
+  }
+  .Single-movie-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .Single-movie-container > div {
+    align-self: center;
+  }
+  .desc-container {
+    width: 100% !important;
+  }
+  .movie-container {
+    gap: 2rem;
+    justify-content: center;
+  }
+  .movie-card {
+    flex-basis: 70%;
+    flex-grow: 0.2;
+  }
+  .Single-movie-container > .desc-container {
+    display: block;
+    width: 60%;
+  }
+}
+@media (max-width: 527px) {
+  .movie-card {
+    flex-basis: 60%;
+    flex-grow: 0.2;
+  }
+}
+
+@media (max-width: 365px) {
+  input {
+    width: 50%;
+  }
+  .movie-container {
+    gap: 2rem;
+    justify-content: center;
+  }
+  .movie-card {
+    flex-basis: 82%;
+    flex-grow: 0.2;
+  }
+}
+
+@media (max-width: 285px) {
+  h1 {
+    font-size: 1.3rem !important;
+    margin: 4% !important;
+  }
+  form > input {
+    width: 95%;
+    padding: 3%;
+  }
+  .movie-container {
+    gap: 2rem;
+    justify-content: center;
+  }
+  .movie-card {
+    flex-basis: 95%;
+    flex-grow: 0.2;
+  }
 }
